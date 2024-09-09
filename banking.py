@@ -1,15 +1,14 @@
-username = "hi"
-password = "yourmom"
-print("Welcome to SE Bank, have funn :P")
-print("Enter username:")
-loginu = input()
-print("Enter password:")
-loginp = input()
+from functions import Auth, Actions
 
-if loginu == username:
-    if loginp == password:
-        print("Yep, you're in!")
+
+def main():
+    auth = Auth()
+    if auth.login():
+        account = Actions()
+        another_account = Actions()  # Assuming another account for transfer
+        Actions.show_options(account, another_account)
     else:
-        print("Nope, wrong pswd.")
-else:
-    print("nope, wrong username")
+        print("Login failed. Please try again.")
+
+if __name__ == "__main__":
+    main()
