@@ -1,6 +1,6 @@
 class Auth:
     def login(self):
-        username = "jcox"
+        username = "kdqn"
         password = "potato"
         print("Enter username:")
         loginu = input()
@@ -36,10 +36,11 @@ class Actions:
         if amount <= self.balance:
             self.balance -= amount
             account.deposit(amount)
-            print(f"Transferred {amount} to other account. New balance is {self.balance}.")
+            print(f"Transferred {amount} to account. New balance is {self.balance}.")
         else:
             print("Insufficient funds")
-    def show_options(account, another_account):
+
+    def show_options(self, another_account):
         while True:
             print("\nChoose an action:")
             print("1. Deposit")
@@ -48,21 +49,29 @@ class Actions:
             print("4. Transfer")
             print("5. Exit")
             choice = input("Enter your choice: ")
-    
+
             if choice == '1':
                 amount = float(input("Enter amount to deposit: "))
-                account.deposit(amount)
+                self.deposit(amount)
             elif choice == '2':
                 amount = float(input("Enter amount to withdraw: "))
-                account.withdraw(amount)
+                self.withdraw(amount)
             elif choice == '3':
-                account.get_balance()
+                print("Account 1:")
+                self.get_balance()
+                print("Account 2:")
+                another_account.get_balance()
             elif choice == '4':
                 amount = float(input("Enter amount to transfer: "))
-                account.transfer(amount, another_account)
+                donor_choice = input("Choose donor account (1 for current account, 2 for another account): ")
+                if donor_choice == '1':
+                    self.transfer(amount, another_account)
+                elif donor_choice == '2':
+                    another_account.transfer(amount, self)
+                else:
+                    print("Invalid choice. Please try again.")
             elif choice == '5':
                 print("Exiting...")
                 break
             else:
-                print("Invalid choice. Please try again.")
-            
+                print("Invalid choice. Please try again. hint:(Use ONLY numbers)")
