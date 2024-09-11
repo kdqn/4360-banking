@@ -2,6 +2,7 @@ class Auth:
     def login(self):
         username = "kdqn"
         password = "potato"
+        loginattempts = 0
         print("Enter username:")
         loginu = input()
         print("Enter password:")
@@ -11,6 +12,8 @@ class Auth:
             return True
         else:
             print("Nope, wrong username or password")
+            loginattempts += 1
+
             return False
 
 class Actions:
