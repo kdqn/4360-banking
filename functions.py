@@ -1,8 +1,16 @@
+import sys
+
 class Auth:
+    def __init__(self):
+        self.login_attempts = 0
+
     def login(self):
+        if self.login_attempts >= 3:
+            print("Sorry you've tried 3 times. Goodbye.")
+            sys.exit(1) #Gracefully Exit
+            
         username = "kdqn"
         password = "potato"
-        login_attempts = 0
         print("Enter username:")
         login_username = input()
         print("Enter password:")
@@ -12,7 +20,7 @@ class Auth:
             return True
         else:
             print("Nope, wrong username or password")
-            login_attempts += 1
+            self.login_attempts += 1
 
             return False
 
