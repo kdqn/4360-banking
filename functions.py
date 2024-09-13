@@ -27,15 +27,18 @@ class Actions:
         self.balance = 0
 
     def withdraw(self, amount):
-        if amount <= self.balance:
+        if 0 < amount <= self.balance:
             self.balance -= amount
             print(f"Withdrew {amount}. New balance is {self.balance}.")
         else:
             print("Insufficient funds")
 
     def deposit(self, amount):
-        self.balance += amount
-        print(f"Deposited {amount}. New balance is {self.balance}.")
+        if amount > 0:
+            self.balance += amount
+            print(f"Deposited {amount}. New balance is {self.balance}.")
+        else:
+            print("You can't deposit negative funds.")
 
     def get_balance(self):
         print(f"Current balance is {self.balance}.")
