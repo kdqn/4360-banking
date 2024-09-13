@@ -8,20 +8,18 @@ class Auth:
         if self.login_attempts >= 3:
             print("Sorry you've tried 3 times. Goodbye.")
             sys.exit(1) #Gracefully Exit
-            
+
         username = "kdqn"
         password = "potato"
-        print("Enter username:")
-        login_username = input()
-        print("Enter password:")
-        login_password = input()
+        login_username = input("Enter username: ")
+        login_password = input("Enter password: ")
+
         if login_username == username and login_password == password:
             print("Yep, you're in!")
             return True
         else:
             print("Nope, wrong username or password")
             self.login_attempts += 1
-
             return False
 
 class Actions:
