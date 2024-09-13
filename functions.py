@@ -1,19 +1,25 @@
+import sys
+
 class Auth:
+    def __init__(self):
+        self.login_attempts = 0
+
     def login(self):
+        if self.login_attempts >= 3:
+            print("Sorry you've tried 3 times. Goodbye.")
+            sys.exit(1) #Gracefully Exit
+
         username = "kdqn"
         password = "potato"
-        loginattempts = 0
-        print("Enter username:")
-        loginu = input()
-        print("Enter password:")
-        loginp = input()
-        if loginu == username and loginp == password:
+        login_username = input("Enter username: ")
+        login_password = input("Enter password: ")
+
+        if login_username == username and login_password == password:
             print("Yep, you're in!")
             return True
         else:
             print("Nope, wrong username or password")
-            loginattempts += 1
-
+            self.login_attempts += 1
             return False
 
 class Actions:
@@ -21,15 +27,18 @@ class Actions:
         self.balance = 0
 
     def withdraw(self, amount):
-        if amount <= self.balance:
+        if 0 < amount <= self.balance:
             self.balance -= amount
             print(f"Withdrew {amount}. New balance is {self.balance}.")
         else:
             print("Insufficient funds")
 
     def deposit(self, amount):
-        self.balance += amount
-        print(f"Deposited {amount}. New balance is {self.balance}.")
+        if amount > 0:
+            self.balance += amount
+            print(f"Deposited {amount}. New balance is {self.balance}.")
+        else:
+            print("You can't deposit negative funds.")
 
     def get_balance(self):
         print(f"Current balance is {self.balance}.")

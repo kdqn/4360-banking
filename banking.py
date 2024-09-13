@@ -1,9 +1,13 @@
 from functions import Auth, Actions
 
 auth = Auth()
-if auth.login():
-    account1 = Actions()
-    account2 = Actions()
-    account1.show_options(account2)  # Highlighted line
-else:
-    print("Login failed. Please try again.")
+
+while True:
+    #Break out of login loop if successful login
+    if(auth.login()):
+        break
+
+account1 = Actions()
+account2 = Actions()
+account1.show_options(account2)  # Highlighted line
+    
