@@ -2,17 +2,17 @@ class Auth:
     def login(self):
         username = "kdqn"
         password = "potato"
-        loginattempts = 0
+        login_attempts = 0
         print("Enter username:")
-        loginu = input()
+        login_username = input()
         print("Enter password:")
-        loginp = input()
-        if loginu == username and loginp == password:
+        login_password = input()
+        if login_username == username and login_password == password:
             print("Yep, you're in!")
             return True
         else:
             print("Nope, wrong username or password")
-            loginattempts += 1
+            login_attempts += 1
 
             return False
 
